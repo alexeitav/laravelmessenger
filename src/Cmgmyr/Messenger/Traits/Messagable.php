@@ -90,7 +90,8 @@ trait Messagable
         $threadsWithNewMessages = [];
 
         //achar threads publicas
-        $threads = Thread::getAllLatest()->where('public','=', 1)->get();
+        //$threads = Thread::getAllLatest()->where('public','=', 1)->get();
+        $threads = Thread::getFiveLatestPublic();
 
         if ($threads) {
             foreach ($threads as $thread) {

@@ -21,7 +21,7 @@ class Thread extends Eloquent
      *
      * @var array
      */
-    protected $fillable = ['subject'];
+    protected $fillable = ['subject', 'public', 'status'];
 
     /**
      * The attributes that should be mutated to dates.
@@ -279,15 +279,31 @@ class Thread extends Eloquent
 
     ///// ACT
     /**
-     * Returns the 5 latest PUBLIC threads by updated_at date
+     * Returns the ALL latest PUBLIC threads by updated_at date
+     * Get threads with or not status 1
      *
-     * @return mixed 
+     * @return mixed
      */
     public static function getAllLatestPublic()
     {
 
-        return self::getAllLatest()
+        return self::latest('created_at')
             ->where('public', '=', 1)
+            ->get();
+    }
+
+    /**
+     * Returns the 5 latest PUBLIC threads by updated_at date
+     * Get only threads with status 1
+     *
+     * @return mixed
+     */
+    public static function getFiveLatestPublic()
+    {
+
+        return self::latest('created_at')
+            ->where('public', '=', 1)
+            ->where('status', '=', 1)
             ->take(5)
             ->get();
     }
