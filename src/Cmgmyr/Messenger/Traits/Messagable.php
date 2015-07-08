@@ -67,4 +67,40 @@ trait Messagable
 
         return $threadsWithNewMessages;
     }
+
+    //////// ACT
+
+    /**
+     * Returns the new messages publics count for user
+     *
+     * @return int
+     */
+    public function newMessagesPublicCount()
+    {
+        return count($this->threadsPublicWithNewMessages());
+    }
+
+    /**
+     * Returns all public threads with new messages
+     *
+     * @return array
+     */
+    public function threadsPublicWithNewMessages()
+    {
+        $threadsWithNewMessages = [];
+
+        //achar threads publicas
+        $threads = Thread::getAllLatest()->where('public','=', 1)->get();
+
+        if ($threads) {
+            foreach ($threads as $thread) {
+                if (!$thread->hasParticipant($this->id)) {
+                    $threadsWithNewMessages[] = $thread->id;
+                }
+            }
+        }
+        return $threadsWithNewMessages;
+
+
+    }
 }

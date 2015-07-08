@@ -276,4 +276,20 @@ class Thread extends Eloquent
 
         return $selectString;
     }
+
+    ///// ACT
+    /**
+     * Returns the 5 latest PUBLIC threads by updated_at date
+     *
+     * @return mixed 
+     */
+    public static function getAllLatestPublic()
+    {
+
+        return self::getAllLatest()
+            ->where('public', '=', 1)
+            ->take(5)
+            ->get();
+    }
+
 }
