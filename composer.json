@@ -1,0 +1,35 @@
+{
+    "name": "alexeitav/laravelmessenger",
+    "description": "Just a few tests. Origial package on https://github.com/cmgmyr/laravel-messenger",
+    "keywords": ["laravel", "messenger", "messaging", "user messaging"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Alexei C Tavares",
+            "email": "tav.alexei@gmail.com",
+            "homepage": "https://github.com/alexeitav",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "illuminate/config": "~5.0",
+        "illuminate/support": "~5.0",
+        "illuminate/database": "~5.0",
+        "nesbot/carbon": "~1.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "4.*",
+        "adamwathan/faktory": "0.3.*",
+        "fabpot/php-cs-fixer": "1.0.*@dev"
+    },
+    "autoload": {
+        "classmap": [
+            "src/migrations"
+        ],
+        "psr-0": {
+            "Cmgmyr\\Messenger\\": "src/"
+        }
+    },
+    "minimum-stability": "stable"
+}
